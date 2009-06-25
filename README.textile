@@ -1,0 +1,37 @@
+h1. Important
+
+As much as you would probably like to ignore your rational mind, head over to my published results, and just take those values as truth. Do not. Or at least don't blame me for any of the architectural results.
+
+I am currently working on these benchmarks to get first-hand data about the scaling properties of CouchDB. Specifically I care about disk usage (to figure out when sharding will be required) and replication speed. However, along the way I am also collecting potentially other useful information, but keep in mind that my test methodology will clearly focus on disk usage and replication characteristics.
+
+If you want to get some more insights into evaluating CouchDB and other #nosql databases, I highly recommend those 2 articles by Jan Lehnardt (@janl):
+
+http://jan.prima.de/~jan/plok/archives/175-Benchmarks-You-are-Doing-it-Wrong.html
+http://jan.prima.de/~jan/plok/archives/176-Caveats-of-Evaluating-Databases.html
+
+h1. Setup
+
+I have choosen to run all tests on Amazon EC2 with c1.medium instances. The reason is simply that this will be my production environment, but it has also the benefit that others can easily verify / compare my results.
+
+So far I have been using ami-0d729464 (Ubuntu 9.04 Jaunty, see "alestic.com":http://alestic.com/). But any other Ubuntu >= 8.04 version should do as well.
+
+Once you have fired up the instance, you can install the latest CouchDB SVN:HEAD version by simply running:
+
+./setup.sh
+
+h1. Running the tests
+
+Just pick any of the .php benchmark files available, then run:
+
+time php insert-bench.php | tee my-results.log
+
+This will show you the real-time output of the script as well as store all results in "my-results.log" so you can share them with the world.
+
+h1. Help extending this suite!
+
+If you need more data than what is currently reported, just fork this project on GitHub and I'll integrate your changes. I'm cool with any languages, I just use PHP as again this is what I use in production and what I know the best.
+
+Feedback & questions can be sent to felix@debuggable.com. I'm @felixge on twitter.
+
+Thanks for checking this out,
+-- Felix Geisendörfer
