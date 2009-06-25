@@ -27,6 +27,12 @@ time php insert-bench.php | tee my-results.log
 
 This will show you the real-time output of the script as well as store all results in "my-results.log" so you can share them with the world.
 
+h1. Published Results
+
+Here are all articles / results published using the tools in this repository. So far its just 1 post on our blog:
+
+*  2009-06-25 "CouchDB Insert Benchmarks (via debuggable.com)":http://debuggable.com/posts/couchdb-insert-benchmarks:4a4365e2-9d04-4170-9f88-2de34834cda3
+
 h1. Help extending this suite!
 
 If you need more data than what is currently reported, just fork this project on GitHub and I'll integrate your changes. I'm cool with any languages, I just use PHP as again this is what I use in production and what I know the best.
