@@ -6,8 +6,8 @@ I am currently working on these benchmarks to get first-hand data about the scal
 
 If you want to get some more insights into evaluating CouchDB and other #nosql databases, I highly recommend those 2 articles by Jan Lehnardt ("@janl":http://twitter.com/janl):
 
-"Benchmarks: You are Doing it Wrong":http://jan.prima.de/~jan/plok/archives/175-Benchmarks-You-are-Doing-it-Wrong.html
-"Caveats of Evaluating Databases":http://jan.prima.de/~jan/plok/archives/176-Caveats-of-Evaluating-Databases.html
+* "Benchmarks: You are Doing it Wrong":http://jan.prima.de/~jan/plok/archives/175-Benchmarks-You-are-Doing-it-Wrong.html
+* "Caveats of Evaluating Databases":http://jan.prima.de/~jan/plok/archives/176-Caveats-of-Evaluating-Databases.html
 
 h1. Setup
 
