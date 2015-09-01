@@ -28,7 +28,8 @@ foreach ($config['insertCounts'] as $docCount) {
 	// Re-create the database for each attempt
 	$db->send('delete', '/benchmark_db');
 	$db->send('put', '/benchmark_db');
-
+	//I am add this alias, because in sprintf method, param $method was undefined. I do not know, did should not be done this way ?
+	$method = $config['method'];
 
 	echo sprintf("-> %s %d docs:\n", $method, $docCount);
 
@@ -148,6 +149,8 @@ class CouchDb {
 		$curlOptions = array(
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_CUSTOMREQUEST => strtoupper($method),
+			//add this header to CouchDB 1.6.1, otherwise server return 415 error code
+			CURLOPT_HTTPHEADER => array('Content-Type:application/json'),
 		);
 
 		if (!empty($document)) {
