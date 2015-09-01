@@ -28,7 +28,8 @@ foreach ($config['insertCounts'] as $docCount) {
 	// Re-create the database for each attempt
 	$db->send('delete', '/benchmark_db');
 	$db->send('put', '/benchmark_db');
-
+	//I am add this alias, because in sprintf method, param $method was undefined. I do not know, did should not be done this way ?
+	$method = $config['method'];
 
 	echo sprintf("-> %s %d docs:\n", $method, $docCount);
 
@@ -69,7 +70,7 @@ foreach ($config['insertCounts'] as $docCount) {
 	clearstatcache();
 	$beforeCompact = array(
 		'stats' => $db->send('get', '/benchmark_db'),
-		'fileSize' => filesize('/usr/local/var/lib/couchdb/benchmark_db.couch'),
+		'fileSize' => filesize('C:\Program Files (x86)\Apache Software Foundation\ReplicaCDB\var\lib\couchdb\benchmark_db.couch'),
 	);
 
 	$compactStart = microtime(true);
@@ -86,7 +87,7 @@ foreach ($config['insertCounts'] as $docCount) {
 	clearstatcache();
 	$afterCompact = array(
 		'stats' => $db->send('get', '/benchmark_db'),
-		'fileSize' => filesize('/usr/local/var/lib/couchdb/benchmark_db.couch'),
+		'fileSize' => filesize('C:\Program Files (x86)\Apache Software Foundation\ReplicaCDB\var\lib\couchdb\benchmark_db.couch'),
 	);
 
 	echo "\n\n";
@@ -129,8 +130,8 @@ foreach ($config['insertCounts'] as $docCount) {
 
 class CouchDb {
 	public $config = array(
-		'host' => 'localhost',
-		'port' => 5984
+		'host' => '10.222.1.157',
+		'port' => 8984
 	);
 
 	public function __construct($config = array()) {
@@ -148,6 +149,8 @@ class CouchDb {
 		$curlOptions = array(
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_CUSTOMREQUEST => strtoupper($method),
+			//add this header to CouchDB 1.6.1, otherwise server return 415 error code
+			CURLOPT_HTTPHEADER => array('Content-Type:application/json'),
 		);
 
 		if (!empty($document)) {
