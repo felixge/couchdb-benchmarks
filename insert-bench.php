@@ -70,7 +70,7 @@ foreach ($config['insertCounts'] as $docCount) {
 	clearstatcache();
 	$beforeCompact = array(
 		'stats' => $db->send('get', '/benchmark_db'),
-		'fileSize' => filesize('C:\Program Files (x86)\Apache Software Foundation\ReplicaCDB\var\lib\couchdb\benchmark_db.couch'),
+		'fileSize' => filesize('/usr/local/var/lib/couchdb/benchmark_db.couch'),
 	);
 
 	$compactStart = microtime(true);
@@ -87,7 +87,7 @@ foreach ($config['insertCounts'] as $docCount) {
 	clearstatcache();
 	$afterCompact = array(
 		'stats' => $db->send('get', '/benchmark_db'),
-		'fileSize' => filesize('C:\Program Files (x86)\Apache Software Foundation\ReplicaCDB\var\lib\couchdb\benchmark_db.couch'),
+		'fileSize' => filesize('/usr/local/var/lib/couchdb/benchmark_db.couch'),
 	);
 
 	echo "\n\n";
@@ -130,8 +130,8 @@ foreach ($config['insertCounts'] as $docCount) {
 
 class CouchDb {
 	public $config = array(
-		'host' => '10.222.1.157',
-		'port' => 8984
+		'host' => 'localhost',
+		'port' => 5984
 	);
 
 	public function __construct($config = array()) {
